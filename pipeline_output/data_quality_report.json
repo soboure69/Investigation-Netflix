@@ -1,0 +1,141 @@
+{
+  "missing_values": {
+    "total_missing": 0,
+    "missing_by_column": {
+      "show_id": 0,
+      "type": 0,
+      "title": 0,
+      "director": 0,
+      "cast": 0,
+      "country": 0,
+      "date_added": 0,
+      "release_year": 0,
+      "duration": 0,
+      "description": 0,
+      "genre": 0
+    },
+    "missing_percentage": {
+      "show_id": 0.0,
+      "type": 0.0,
+      "title": 0.0,
+      "director": 0.0,
+      "cast": 0.0,
+      "country": 0.0,
+      "date_added": 0.0,
+      "release_year": 0.0,
+      "duration": 0.0,
+      "description": 0.0,
+      "genre": 0.0
+    }
+  },
+  "duplicates": {
+    "total_duplicates": 0,
+    "duplicate_percentage": 0.0
+  },
+  "data_types": {
+    "show_id": {
+      "dtype": "object",
+      "unique_values": 4812,
+      "sample_values": [
+        "s2",
+        "s3",
+        "s4"
+      ]
+    },
+    "type": {
+      "dtype": "object",
+      "unique_values": 2,
+      "sample_values": [
+        "Movie",
+        "Movie",
+        "Movie"
+      ]
+    },
+    "title": {
+      "dtype": "object",
+      "unique_values": 4812,
+      "sample_values": [
+        "7:19",
+        "23:59",
+        "9"
+      ]
+    },
+    "director": {
+      "dtype": "object",
+      "unique_values": 3615,
+      "sample_values": [
+        "Jorge Michel Grau",
+        "Gilbert Chan",
+        "Shane Acker"
+      ]
+    },
+    "cast": {
+      "dtype": "object",
+      "unique_values": 4690,
+      "sample_values": [
+        "Demi\u00e1n Bichir, H\u00e9ctor Bonilla, Oscar Serrano, Azalia Ortiz, Octavio Michel, Carmen Beato",
+        "Tedd Chan, Stella Chung, Henley Hii, Lawrence Koh, Tommy Kuan, Josh Lai, Mark Lee, Susan Leong, Benjamin Lim",
+        "Elijah Wood, John C. Reilly, Jennifer Connelly, Christopher Plummer, Crispin Glover, Martin Landau, Fred Tatasciore, Alan Oppenheimer, Tom Kane"
+      ]
+    },
+    "country": {
+      "dtype": "object",
+      "unique_values": 72,
+      "sample_values": [
+        "Mexico",
+        "Singapore",
+        "United States"
+      ]
+    },
+    "date_added": {
+      "dtype": "object",
+      "unique_values": 1292,
+      "sample_values": [
+        "December 23, 2016",
+        "December 20, 2018",
+        "November 16, 2017"
+      ]
+    },
+    "release_year": {
+      "dtype": "int64",
+      "unique_values": 71,
+      "sample_values": [
+        2016,
+        2011,
+        2009
+      ]
+    },
+    "duration": {
+      "dtype": "int64",
+      "unique_values": 193,
+      "sample_values": [
+        93,
+        78,
+        80
+      ]
+    },
+    "description": {
+      "dtype": "object",
+      "unique_values": 4807,
+      "sample_values": [
+        "After a devastating earthquake hits Mexico City, trapped survivors from all walks of life wait to be rescued while trying desperately to stay alive.",
+        "When an army recruit is found dead, his fellow soldiers are forced to confront a terrifying secret that's haunting their jungle island training camp.",
+        "In a postapocalyptic world, rag-doll robots hide in fear from dangerous machines out to exterminate them, until a brave newcomer joins the group."
+      ]
+    },
+    "genre": {
+      "dtype": "object",
+      "unique_values": 31,
+      "sample_values": [
+        "Dramas",
+        "Horror Movies",
+        "Action"
+      ]
+    }
+  },
+  "business_rules": {
+    "invalid_release_years": 0,
+    "invalid_movie_durations": 0
+  },
+  "overall_quality_score": 100
+}

@@ -1,0 +1,44 @@
+# Netflix Data Analysis Project - Requirements
+# ==========================================
+
+# Core data analysis
+pandas>=1.5.0
+numpy>=1.21.0
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# Optional ML and NLP (for advanced analysis)
+scikit-learn>=1.1.0
+wordcloud>=1.8.0
+
+# API and web services
+flask>=2.2.0
+flask-restx>=1.0.0
+flask-cors>=3.0.0
+flask-caching>=2.0.0
+
+# Dépendances optionnelles pour fonctionnalités avancées
+wordcloud>=1.9.2
+scikit-learn>=1.3.0
+seaborn>=0.12.0
+
+# Dashboard et visualisation interactive
+streamlit>=1.28.0
+plotly>=5.17.0
+dash>=2.14.0
+
+# Database
+sqlite3  # Built-in with Python
+
+# Data quality and validation
+great-expectations>=0.15.0  # Optional
+
+# Development and testing
+pytest>=7.0.0
+requests>=2.28.0
+
+# Logging and monitoring
+python-json-logger>=2.0.0
+
+# Documentation
+sphinx>=5.0.0  # Optional

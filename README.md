@@ -77,6 +77,34 @@ Ce projet a été étendu avec des analyses approfondies du dataset Netflix :
 - `netflix_analyse_nlp.png`
 - `netflix_patterns_duree.png`
 
+### 🔧 **4. Pipeline ETL Automatisé** (`04_data_pipeline.py`)
+- **Extract** : Chargement et validation des données source
+- **Transform** : Nettoyage, standardisation et enrichissement
+- **Load** : Structuration en base SQLite relationnelle
+- **Quality Control** : Score de qualité et rapports détaillés
+- **Monitoring** : Logging complet et métriques de performance
+
+**Fichiers générés :**
+- `netflix_database.db` - Base de données SQLite
+- `netflix_pipeline.log` - Logs d'exécution
+- `pipeline_output/data_quality_report.json` - Rapport qualité
+
+### 5. **API REST** (`05_netflix_api.py`)
+- **Endpoints RESTful** : Accès programmatique aux données
+- **Documentation Swagger** : Interface interactive à `/docs/`
+- **Rate Limiting** : Protection contre les abus
+- **Cache intelligent** : Optimisation des performances
+- **Recherche avancée** : Filtres multiples et flexibles
+- **Analytics** : Statistiques et métriques en temps réel
+
+### 6. **Dashboard Interactif** (`06_netflix_dashboard.py`)
+- **Interface web moderne** : Streamlit avec design responsive
+- **Visualisations dynamiques** : Plotly pour graphiques interactifs
+- **Filtrage en temps réel** : Exploration intuitive des données
+- **Analyses multi-dimensionnelles** : Temporelles, géographiques, genres
+- **Explorateur de contenu** : Recherche et navigation avancées
+- **Insights automatiques** : Recommandations basées sur les données
+
 ---
 
 ## 🛠️ Structure du Projet
@@ -87,10 +115,22 @@ Investigation-Netflix/
 ├── netflix_data.csv                    # Dataset original
 ├── notebook.ipynb                      # Analyse initiale (années 1990)
 ├── plan-perspectives.md                # Plan d'analyses avancées
+├── requirements.txt                    # Dépendances Python
 │
 ├── 01_temporal_analysis.py             # Analyse temporelle complète
 ├── 02_geographic_analysis.py           # Analyse géographique
 ├── 03_genre_content_analysis.py        # Analyse genres et contenus
+├── 04_data_pipeline.py                 # Pipeline ETL automatisé
+├── 05_netflix_api.py                   # API REST complète
+├── 06_netflix_dashboard.py             # Dashboard interactif Streamlit
+├── dashboard_config.py                 # Configuration du dashboard
+│
+├── netflix_database.db                 # Base de données SQLite
+├── netflix_pipeline.log                # Logs du pipeline
+├── API_DOCUMENTATION.md                # Documentation API
+│
+├── pipeline_output/
+│   └── data_quality_report.json        # Rapport de qualité
 │
 └── Graphiques générés/
     ├── netflix_evolution_temporelle.png
@@ -134,7 +174,45 @@ python 02_geographic_analysis.py
 
 # Analyse des genres et contenus
 python 03_genre_content_analysis.py
+
+# Pipeline ETL (requis pour l'API)
+python 04_data_pipeline.py
+
+# API REST (après le pipeline)
+python 05_netflix_api.py
 ```
+
+### Utilisation de l'API :
+```bash
+# Démarrer l'API
+python 05_netflix_api.py
+
+# Exemples de requêtes
+curl "http://localhost:5000/api/content/movies"
+curl "http://localhost:5000/api/search/by-genre/Dramas"
+curl "http://localhost:5000/api/analytics/stats"
+```
+
+**Interface Web :**
+- 🏠 Accueil : `http://localhost:5000/`
+- 📚 Documentation : `http://localhost:5000/docs/`
+
+### Utilisation du Dashboard :
+```bash
+# Démarrer le dashboard interactif
+streamlit run 06_netflix_dashboard.py
+
+# Ouvrir dans le navigateur
+# http://localhost:8501
+```
+
+**Fonctionnalités Dashboard :**
+- 📊 **Vue d'ensemble** : Métriques clés et distributions
+- 📈 **Analyse temporelle** : Évolution et patterns saisonniers
+- 🌍 **Analyse géographique** : Cartes et distributions par pays
+- 🎭 **Analyse des genres** : Popularité et évolution
+- 🔍 **Explorateur** : Recherche et filtrage avancés
+- 💡 **Insights** : Recommandations automatiques
 
 ---
 
@@ -160,11 +238,6 @@ python 03_genre_content_analysis.py
 ## 🔮 Prochaines Étapes
 
 Le projet peut être étendu avec :
-
-### 🔧 **Data Engineering**
-- Pipeline ETL automatisé
-- API REST pour interrogation des données
-- Dashboard interactif (Streamlit/Dash)
 
 ### 🤖 **Machine Learning & IA**
 - Modèles prédictifs de succès
