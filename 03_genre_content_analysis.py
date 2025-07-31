@@ -68,6 +68,9 @@ class NetflixGenreContentAnalyzer:
         self.df['decade'] = (self.df['release_year'] // 10) * 10
         self.df['decade_label'] = self.df['decade'].astype(str) + 's'
         
+        # Nettoyage des descriptions pour NLP
+        self.df['description_clean'] = self.df['description'].apply(self.clean_text)
+        
         # Séparation des genres multiples
         self.genres_expanded = []
         for idx, row in self.df.iterrows():
@@ -77,12 +80,10 @@ class NetflixGenreContentAnalyzer:
                 if genre and genre != 'Unknown':
                     new_row = row.copy()
                     new_row['genre_clean'] = genre
+                    new_row['description_clean'] = row['description_clean']  # <-- Ajoute de cette ligne
                     self.genres_expanded.append(new_row)
         
         self.df_genres = pd.DataFrame(self.genres_expanded)
-        
-        # Nettoyage des descriptions pour NLP
-        self.df['description_clean'] = self.df['description'].apply(self.clean_text)
         
         print(f"✅ Données préparées: {len(self.df)} entrées totales")
         print(f"🎭 Genres uniques: {self.df_genres['genre_clean'].nunique()}")
@@ -308,17 +309,23 @@ class NetflixGenreContentAnalyzer:
         fig, axes = plt.subplots(2, 2, figsize=(18, 14))
         
         # 1. Nuage de mots global
-        if len(all_descriptions) > 100:
+        if len(all_descriptions) > 100 and WORDCLOUD_AVAILABLE:
             try:
                 wordcloud = WordCloud(width=800, height=400, background_color='white', 
                                     max_words=100, colormap='viridis').generate(all_descriptions)
                 axes[0,0].imshow(wordcloud, interpolation='bilinear')
                 axes[0,0].set_title('☁️ Nuage de Mots - Toutes Descriptions')
                 axes[0,0].axis('off')
-            except:
-                axes[0,0].text(0.5, 0.5, 'Nuage de mots\nnon disponible', 
+            except Exception as e:
+                axes[0,0].text(0.5, 0.5, f'Erreur nuage de mots:\n{str(e)[:50]}...', 
                               ha='center', va='center', transform=axes[0,0].transAxes)
-                axes[0,0].set_title('☁️ Nuage de Mots - Toutes Descriptions')
+                axes[0,0].set_title('☁️ Nuage de Mots - Erreur')
+                axes[0,0].axis('off')
+        else:
+            axes[0,0].text(0.5, 0.5, 'Nuage de mots\nnon disponible\n(WordCloud requis)', 
+                          ha='center', va='center', transform=axes[0,0].transAxes)
+            axes[0,0].set_title('☁️ Nuage de Mots - Non Disponible')
+            axes[0,0].axis('off')
         
         # 2. Mots les plus fréquents
         top_words = dict(word_freq.most_common(20))
@@ -327,7 +334,13 @@ class NetflixGenreContentAnalyzer:
         axes[0,1].set_xlabel('Fréquence')
         
         # 3. Longueur des descriptions par genre
-        desc_length_by_genre = df_with_desc.groupby('genre')['description'].str.len().mean().sort_values(ascending=False).head(15)
+          # Calculer la longueur d'abord
+        df_with_desc['desc_len'] = df_with_desc['description'].str.len()
+
+          # Puis grouper
+        desc_length_by_genre = df_with_desc.groupby('genre')['desc_len'].mean().sort_values(ascending=False).head(15)
+
+        #desc_length_by_genre = df_with_desc.groupby('genre')['description'].str.len().mean().sort_values(ascending=False).head(15)
         axes[1,0].barh(desc_length_by_genre.index, desc_length_by_genre.values, color='orange')
         axes[1,0].set_title('📏 Longueur Moyenne des Descriptions par Genre')
         axes[1,0].set_xlabel('Longueur Moyenne (caractères)')
@@ -443,6 +456,10 @@ class NetflixGenreContentAnalyzer:
         word_freq, sentiment, genre_words = self.analyze_content_nlp()
         duration_stats, duration_evolution = self.analyze_duration_patterns()
         
+        # Gérer les cas où certaines analyses ne sont pas disponibles
+        clustering_available = clusters is not None
+        nlp_available = word_freq is not None
+        
         # Résumé exécutif
         print("\n🎯 RÉSUMÉ EXÉCUTIF - ANALYSE GENRES ET CONTENUS")
         print("=" * 60)
@@ -454,8 +471,14 @@ class NetflixGenreContentAnalyzer:
         # Insights clés
         print(f"\n🔍 INSIGHTS CLÉS:")
         print(f"   • Diversité des genres: Croissance constante depuis les années 1980")
-        print(f"   • Clustering: {len(set(clusters))} groupes de genres similaires identifiés")
-        print(f"   • Sentiment: Descriptions généralement neutres avec variations par genre")
+        if clustering_available:
+            print(f"   • Clustering: {len(set(clusters))} groupes de genres similaires identifiés")
+        else:
+            print(f"   • Clustering: Non disponible (sklearn requis)")
+        if nlp_available:
+            print(f"   • Sentiment: Descriptions généralement neutres avec variations par genre")
+        else:
+            print(f"   • Sentiment: Analyse basique disponible")
         print(f"   • Durées: Stabilité relative avec spécialisations par genre")
         
         # Recommandations
