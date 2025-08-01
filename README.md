@@ -113,38 +113,39 @@ Ce projet a été étendu avec des analyses approfondies du dataset Netflix :
 - **Clustering avancé** : Regroupement intelligent des contenus similaires
 - **Évaluation et tests** : Module d'evaluation des performances (`08_ml_evaluation.py`)
 
+### 8. **Business Intelligence** (`09_business_intelligence.py`)
+- **Analyse ROI** : ROI par genre, région et type de contenu
+- **Opportunités de marché** : Marchés émergents et sous-exploités
+- **Optimisation portfolio** : Recommandations de diversification
+- **KPIs business** : Métriques financières et opérationnelles
+- **Recommandations exécutives** : Stratégies data-driven
+- **Rapports exécutifs** : Synthèses pour la direction
+
 ---
 
 ## 🛠️ Structure du Projet
 
 ```
 Investigation-Netflix/
-├── README.md                           # Documentation principale
-├── netflix_data.csv                    # Dataset original
-├── notebook.ipynb                      # Analyse initiale (années 1990)
-├── plan-perspectives.md                # Plan d'analyses avancées
-├── requirements.txt                    # Dépendances Python
-│
-├── 01_temporal_analysis.py             # Analyse temporelle complète
-├── 02_geographic_analysis.py           # Analyse géographique
-├── 03_genre_content_analysis.py        # Analyse genres et contenus
-├── 04_data_pipeline.py                 # Pipeline ETL automatisé
-├── 05_netflix_api.py                   # API REST complète
-├── 06_netflix_dashboard.py             # Dashboard interactif Streamlit
-├── dashboard_config.py                 # Configuration du dashboard
-├── 07_netflix_ml_models.py             # Modèles Machine Learning
-├── 08_ml_evaluation.py                 # Évaluation des modèles ML
-├── start_dashboard.py                  # Lanceur du dashboard
-│
+├── netflix_data.csv                    # Dataset principal
 ├── netflix_database.db                 # Base de données SQLite
-├── netflix_pipeline.log                # Logs du pipeline
-├── API_DOCUMENTATION.md                # Documentation API
+├── requirements.txt                     # Dépendances Python
+├── README.md                           # Documentation
+├── plan-perspectives.md                # Plan et perspectives
 │
-├── pipeline_output/
-│   └── data_quality_report.json        # Rapport de qualité
+├── 01_temporal_analysis.py             # Analyse temporelle
+├── 02_geographic_analysis.py           # Analyse géographique  
+├── 03_genre_content_analysis.py        # Analyse genres et contenu
+├── 04_data_pipeline.py                 # Pipeline ETL
+├── 05_netflix_api.py                   # API REST
+├── 06_netflix_dashboard.py             # Dashboard interactif
+├── 07_netflix_ml_models.py             # Modèles ML
+├── 08_ml_evaluation.py                 # Évaluation ML
+├── 09_business_intelligence.py         # Analyse BI stratégique
+├── 10_bi_evaluation.py                 # Évaluation BI
 │
-├── ml_output/
-│   ├── ml_analysis_report.json          # Rapport d'analyse ML
+├── dashboard_config.py                 # Configuration dashboard
+├── start_dashboard.py                  # Lanceur dashboard
 │   ├── business_insights.json           # Insights business
 │   ├── success_prediction_model.pkl     # Modèle de prédiction
 │   ├── genre_classification_model.pkl   # Modèle de classification
@@ -247,6 +248,23 @@ python 08_ml_evaluation.py
 - 🎯 **Recommandations** : Système basé sur la similarité de contenu
 - 😊 **Analyse de sentiment** : Polarité des descriptions (-1 à +1)
 - 📊 **Insights business** : Recommandations stratégiques automatiques
+
+### Utilisation du Business Intelligence :
+```bash
+# Analyse BI stratégique
+python 09_business_intelligence.py
+
+# Évaluation et insights exécutifs
+python 10_bi_evaluation.py
+```
+
+**Analyses BI Disponibles :**
+- 💰 **Analyse ROI** : ROI par genre, région et type de contenu
+- 🎯 **Opportunités de marché** : Marchés émergents et sous-exploités
+- 📊 **Optimisation portfolio** : Recommandations de diversification
+- 📈 **KPIs business** : Métriques financières et opérationnelles
+- 🎯 **Recommandations exécutives** : Stratégies data-driven
+- 📋 **Rapports exécutifs** : Synthèses pour la direction
 
 ---
 
