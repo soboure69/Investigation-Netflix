@@ -105,6 +105,14 @@ Ce projet a été étendu avec des analyses approfondies du dataset Netflix :
 - **Explorateur de contenu** : Recherche et navigation avancées
 - **Insights automatiques** : Recommandations basées sur les données
 
+### 7. **Machine Learning & IA** (`07_netflix_ml_models.py`)
+- **Prédiction de succès** : Modèles prédictifs de popularité des contenus
+- **Classification de genres** : Classification automatique basée sur les descriptions
+- **Système de recommandation** : Recommandations basées sur le contenu
+- **Analyse de sentiment** : Analyse NLP des descriptions et tons
+- **Clustering avancé** : Regroupement intelligent des contenus similaires
+- **Évaluation et tests** : Module d'evaluation des performances (`08_ml_evaluation.py`)
+
 ---
 
 ## 🛠️ Structure du Projet
@@ -124,6 +132,9 @@ Investigation-Netflix/
 ├── 05_netflix_api.py                   # API REST complète
 ├── 06_netflix_dashboard.py             # Dashboard interactif Streamlit
 ├── dashboard_config.py                 # Configuration du dashboard
+├── 07_netflix_ml_models.py             # Modèles Machine Learning
+├── 08_ml_evaluation.py                 # Évaluation des modèles ML
+├── start_dashboard.py                  # Lanceur du dashboard
 │
 ├── netflix_database.db                 # Base de données SQLite
 ├── netflix_pipeline.log                # Logs du pipeline
@@ -131,6 +142,13 @@ Investigation-Netflix/
 │
 ├── pipeline_output/
 │   └── data_quality_report.json        # Rapport de qualité
+│
+├── ml_output/
+│   ├── ml_analysis_report.json          # Rapport d'analyse ML
+│   ├── business_insights.json           # Insights business
+│   ├── success_prediction_model.pkl     # Modèle de prédiction
+│   ├── genre_classification_model.pkl   # Modèle de classification
+│   └── recommendation_model.pkl         # Modèle de recommandation
 │
 └── Graphiques générés/
     ├── netflix_evolution_temporelle.png
@@ -213,6 +231,22 @@ streamlit run 06_netflix_dashboard.py
 - 🎭 **Analyse des genres** : Popularité et évolution
 - 🔍 **Explorateur** : Recherche et filtrage avancés
 - 💡 **Insights** : Recommandations automatiques
+
+### Utilisation des Modèles ML :
+```bash
+# Construction des modèles ML
+python 07_netflix_ml_models.py
+
+# Évaluation et tests des modèles
+python 08_ml_evaluation.py
+```
+
+**Modèles Disponibles :**
+- 🤖 **Prédiction de succès** : Score de popularité prédite (0-1)
+- 🎭 **Classification de genres** : Classification automatique par description
+- 🎯 **Recommandations** : Système basé sur la similarité de contenu
+- 😊 **Analyse de sentiment** : Polarité des descriptions (-1 à +1)
+- 📊 **Insights business** : Recommandations stratégiques automatiques
 
 ---
 
